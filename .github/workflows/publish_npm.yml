@@ -21,6 +21,7 @@ permissions: write-all
 env:
   SERVER: production
   PREFIX: 0.0.1
+  VERSION: 0.0.1-rc${{ github.run_number }}
   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
 jobs:
@@ -42,6 +43,10 @@ jobs:
           BUILD_NUMBER=${{ github.run_number }}
           echo "VERSION=${{ env.PREFIX }}-rc${BUILD_NUMBER}" >> $GITHUB_ENV
 
+      - name: Update package version
+        run: |
+          npm version ${{ env.VERSION }} --no-git-tag-version
+
       # 3. Checkout code từ repository
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -50,19 +55,23 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'  # Bạn có thể thay đổi version nếu cần
+          node-version: '18.10'  # Bạn có thể thay đổi version nếu cần
           registry-url: 'https://registry.npmjs.org/'  # Registry chính thức của npm
-          scope: '@nqdev'  # Scope của package
+          # scope: '@nqdev'  # Scope của package
 
       # 5. Cài đặt pnpm
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 7
+          version: 9.1.4
 
       # 6. Cài đặt dependencies
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      # # 7. Check Lint
+      # - name: Build and Lint
+      #   run: pnpm run prepublishOnly
 
       # 7. Build package
       - name: Build
@@ -71,7 +80,8 @@ jobs:
       # 6. Publish lên npm
       # https://github.com/marketplace/actions/npm-publish
       - name: Publish to npm
-        run: npm publish --access public
+        if: success()
+        run: pnpm publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
