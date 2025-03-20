@@ -63,7 +63,8 @@ jobs:
 
       # 6. Cài đặt dependencies
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        # run: pnpm install --frozen-lockfile
+        run: pnpm install --no-frozen-lockfile
 
       # # 7. Check Lint
       # - name: Build and Lint
