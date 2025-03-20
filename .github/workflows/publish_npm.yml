@@ -1,6 +1,7 @@
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Workflow Publish Package to npmjs for GitHub Actions
 # ---------------------------------------------------
+# https://dev.to/astagi/publish-to-npm-using-github-actions-23fn
 # https://docs.github.com/en/actions/use-cases-and-examples/publishing-packages/publishing-nodejs-packages
 # https://docs.github.com/en/actions/guides/publishing-nodejs-packages
 # https://docs.github.com/en/actions/guides/publishing-docker-images
@@ -51,6 +52,7 @@ jobs:
         with:
           node-version: '16'  # Bạn có thể thay đổi version nếu cần
           registry-url: 'https://registry.npmjs.org/'  # Registry chính thức của npm
+          scope: '@nqdev'  # Scope của package
 
       # 5. Cài đặt pnpm
       - name: Setup pnpm
