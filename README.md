@@ -4,8 +4,6 @@ This is an n8n community node. It lets you use eSMS.vn in your n8n workflows.
 
 eSMS.vn is a messaging service that allows you to send SMS, Zalo, or Viber messages for marketing campaigns, customer care, or OTP verification directly through its API.
 
-_App/service name_ is _one or two sentences describing the service this node integrates with_.
-
 [n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/reference/license/) workflow automation platform.
 
 [Installation](#installation)  
