@@ -43,9 +43,9 @@ jobs:
           BUILD_NUMBER=${{ github.run_number }}
           echo "VERSION=${{ env.PREFIX }}-rc${BUILD_NUMBER}" >> $GITHUB_ENV
 
-      - name: Update package version
-        run: |
-          npm version ${{ env.VERSION }} --no-git-tag-version
+      # - name: Update package version
+      #   run: |
+      #     npm version ${{ env.VERSION }} --no-git-tag-version
 
       # 3. Checkout code từ repository
       - name: Checkout repository
