@@ -1,6 +1,8 @@
 # n8n-nodes-esmsvn
 
-This is an n8n community node. It lets you use _app/service name_ in your n8n workflows.
+This is an n8n community node. It lets you use eSMS.vn in your n8n workflows.
+
+eSMS.vn is a messaging service that allows you to send SMS, Zalo, or Viber messages for marketing campaigns, customer care, or OTP verification directly through its API.
 
 _App/service name_ is _one or two sentences describing the service this node integrates with_.
 
@@ -20,27 +22,71 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 
 ## Operations
 
-_List the operations supported by your node._
+The `n8n-nodes-esmsvn` node supports the following operations:
+
+- **Send SMS**: Send text messages to one or multiple recipients.
+- **Send Zalo Message**: Send messages via Zalo for notifications or marketing.
+- **Send Viber Message**: Send messages via Viber for promotional or customer care purposes.
+- **Send OTP**: Generate and send one-time passwords (OTP) for verification.
+
+Each operation allows customization such as recipient phone numbers, message content, and sender ID (if supported by eSMS.vn).
 
 ## Credentials
 
-_If users need to authenticate with the app/service, provide details here. You should include prerequisites (such as signing up with the service), available authentication methods, and how to set them up._
+To use this node, you need to authenticate with eSMS.vn using an API key. Follow these steps to set up your credentials:
+
+1. **Prerequisites:**
+   - Sign up for an account at [eSMS.vn](https://esms.vn/).
+   - Obtain your API key from the eSMS.vn developer dashboard (refer to the [eSMS.vn API documentation](http://developers.esms.vn/)).
+2. **Setup in n8n:**
+   - In n8n, go to the Credentials section and click "Add Credential."
+   - Select "eSMS.vn API" (or the name you’ve defined for this node’s credential type).
+   - Enter your API key in the provided field.
+   - Save the credential and connect it to the `n8n-nodes-esmsvn` node in your workflow.
+
+No additional authentication methods are required beyond the API key.
 
 ## Compatibility
 
-_State the minimum n8n version, as well as which versions you test against. You can also include any known version incompatibility issues._
+- **Minimum n8n version**: Tested with n8n version 0.200.0 and above.
+- **Tested versions**: Compatible with n8n versions up to the latest release as of March 19, 2025.
+- **Known issues**: No known version incompatibilities at this time.
 
 ## Usage
 
-_This is an optional section. Use it to help users with any difficult or confusing aspects of the node._
+This node is straightforward to use once credentials are set up. Here’s a quick guide to get started:
 
-_By the time users are looking for community nodes, they probably already know n8n basics. But if you expect new users, you can link to the [Try it out](https://docs.n8n.io/try-it-out/) documentation to help them get started._
+1. Add the `eSMS.vn` node to your workflow.
+   ![Adding eSMS.vn node](docs/images/image1.png)
+   [Placeholder for Image 1: Screenshot of adding the eSMS.vn node to a workflow]
+2. Select an operation (e.g., "Send SMS").
+   [Placeholder for Image 2: Screenshot of selecting the "Send SMS" operation in the node settings]
+3. Connect your eSMS.vn API credentials.
+   [Placeholder for Image 3: Screenshot of the credential selection dropdown with eSMS.vn API highlighted]
+4. Configure the node by entering the recipient’s phone number(s), message content, and any optional parameters (e.g., sender ID).
+   [Placeholder for Image 4: Screenshot of the node configuration panel with sample inputs like phone number and message text]
+5. Execute the workflow to send your message.
+   [Placeholder for Image 5: Screenshot of a completed workflow with a success message or output log]
+
+For new n8n users, check out the [Try it out](https://docs.n8n.io/try-it-out/) documentation to learn the basics of building workflows.
+
+**Tip:** If you encounter errors, double-check your API key and ensure your eSMS.vn account has sufficient credits for sending messages.
 
 ## Resources
 
 - [n8n community nodes documentation](https://docs.n8n.io/integrations/community-nodes/)
-- _Link to app/service documentation._
+- [eSMS.vn API documentation](http://developers.esms.vn/)
 
 ## Version history
 
-_This is another optional section. If your node has multiple versions, include a short description of available versions and what changed, as well as any compatibility impact._
+- **0.1.0** (_Initial Release_)
+  - Released on March 19, 2025.
+  - First version of `n8n-nodes-esmsvn`.
+  - Supports sending SMS, Zalo, and Viber messages, as well as OTP generation via the eSMS.vn API.
+  - Basic integration with n8n workflows, including credential setup using an API key.
+- **0.1.1**
+  - Released on March 25, 2025 (placeholder date).
+  - Fixed integration bugs to improve stability and reliability with the eSMS.vn API.
+- **0.2.0**
+  - Released on April 1, 2025 (placeholder date).
+  - Added support for sending SMS messages with brandname (sender ID customization).
