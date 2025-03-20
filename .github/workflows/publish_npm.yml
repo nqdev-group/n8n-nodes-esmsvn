@@ -43,10 +43,6 @@ jobs:
           BUILD_NUMBER=${{ github.run_number }}
           echo "VERSION=${{ env.PREFIX }}-rc${BUILD_NUMBER}" >> $GITHUB_ENV
 
-      # - name: Update package version
-      #   run: |
-      #     npm version ${{ env.VERSION }} --no-git-tag-version
-
       # 3. Checkout code từ repository
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -55,7 +51,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18.10'  # Bạn có thể thay đổi version nếu cần
+          node-version: '18.12'  # Bạn có thể thay đổi version nếu cần
           registry-url: 'https://registry.npmjs.org/'  # Registry chính thức của npm
           # scope: '@nqdev'  # Scope của package
 
